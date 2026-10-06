@@ -1,15 +1,13 @@
---[[
-    PC GAMER ULTRA
-    Projeto Lua para GitHub
-    Simulação de um PC capaz de rodar jogos pesados
-]]
+-- ==========================================
+--           PC NOVO - PC GAMER
+-- ==========================================
 
 local PC = {
-    nome = "LEKO GAMER ULTRA",
+    nome = "PC NOVO",
     cpu = "AMD Ryzen 9 9950X",
     gpu = "NVIDIA RTX 5090",
-    ram = 64, -- GB
-    armazenamento = 4000, -- GB
+    ram = 64,
+    armazenamento = 4000,
     sistema = "Windows 11"
 }
 
@@ -17,46 +15,54 @@ local jogos = {
     {
         nome = "GTA V",
         ram = 8,
-        gpu = "RTX 2060",
         fps = 180
     },
 
     {
         nome = "GTA VI",
         ram = 16,
-        gpu = "RTX 4070",
         fps = 100
     },
 
     {
         nome = "Cyberpunk 2077",
         ram = 16,
-        gpu = "RTX 4070",
         fps = 140
     },
 
     {
         nome = "Red Dead Redemption 2",
         ram = 12,
-        gpu = "RTX 3060",
         fps = 160
     },
 
     {
         nome = "Microsoft Flight Simulator",
         ram = 32,
-        gpu = "RTX 4080",
         fps = 120
     }
 }
 
+
+-- ==========================================
+-- FUNÇÃO PARA MOSTRAR UMA LINHA
+-- ==========================================
+
 local function linha()
-    print("----------------------------------------")
+    print("------------------------------------------")
 end
 
+
+-- ==========================================
+-- MOSTRAR INFORMAÇÕES DO PC
+-- ==========================================
+
 local function mostrarPC()
+
     linha()
-    print("        " .. PC.nome)
+
+    print("             " .. PC.nome)
+
     linha()
 
     print("CPU: " .. PC.cpu)
@@ -66,48 +72,86 @@ local function mostrarPC()
     print("Sistema: " .. PC.sistema)
 
     linha()
+
 end
+
+
+-- ==========================================
+-- VERIFICAR UM JOGO
+-- ==========================================
 
 local function verificarJogo(jogo)
-    print("\n🎮 " .. jogo.nome)
+
+    print("")
+    print("JOGO: " .. jogo.nome)
 
     if PC.ram >= jogo.ram then
+
         print("RAM: OK")
+        print("FPS estimado: " .. jogo.fps)
+
+        if jogo.fps >= 120 then
+            print("STATUS: EXCELENTE")
+
+        elseif jogo.fps >= 60 then
+            print("STATUS: BOM")
+
+        else
+            print("STATUS: FRACO")
+        end
+
     else
-        print("RAM: insuficiente")
-        return
+
+        print("RAM: INSUFICIENTE")
+        print("RAM necessaria: " .. jogo.ram .. " GB")
+
     end
 
-    print("GPU necessária: " .. jogo.gpu)
-    print("FPS estimado: " .. jogo.fps)
-
-    if jogo.fps >= 120 then
-        print("Status: RODANDO MUITO BEM 🚀")
-    elseif jogo.fps >= 60 then
-        print("Status: RODANDO BEM ✅")
-    else
-        print("Status: RODANDO COM DIFICULDADE ⚠️")
-    end
 end
 
+
+-- ==========================================
+-- INICIAR O PC
+-- ==========================================
+
 local function iniciarPC()
-    print("Iniciando PC...")
+
+    print("")
+    print("INICIANDO PC NOVO...")
+    print("")
+
     print("Carregando CPU...")
     print("Carregando GPU...")
     print("Carregando RAM...")
-    print("Sistema iniciado!")
+    print("Carregando sistema...")
+
+    print("")
+    print("PC INICIADO!")
 
     mostrarPC()
 
-    print("Jogos compatíveis:")
+    print("")
+    print("JOGOS TESTADOS:")
 
     for _, jogo in ipairs(jogos) do
+
         verificarJogo(jogo)
+
     end
 
+    print("")
     linha()
-    print("PC pronto para jogar! 🎮🔥")
+    print("PC NOVO PRONTO PARA JOGAR!")
     linha()
+
 end
 
+
+-- ==========================================
+-- INICIAR
+-- ==========================================
+
 iniciarPC()
+PC-novo
+│
+└── main.lua
