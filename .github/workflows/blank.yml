@@ -1,0 +1,113 @@
+--[[
+    PC GAMER ULTRA
+    Projeto Lua para GitHub
+    Simulação de um PC capaz de rodar jogos pesados
+]]
+
+local PC = {
+    nome = "LEKO GAMER ULTRA",
+    cpu = "AMD Ryzen 9 9950X",
+    gpu = "NVIDIA RTX 5090",
+    ram = 64, -- GB
+    armazenamento = 4000, -- GB
+    sistema = "Windows 11"
+}
+
+local jogos = {
+    {
+        nome = "GTA V",
+        ram = 8,
+        gpu = "RTX 2060",
+        fps = 180
+    },
+
+    {
+        nome = "GTA VI",
+        ram = 16,
+        gpu = "RTX 4070",
+        fps = 100
+    },
+
+    {
+        nome = "Cyberpunk 2077",
+        ram = 16,
+        gpu = "RTX 4070",
+        fps = 140
+    },
+
+    {
+        nome = "Red Dead Redemption 2",
+        ram = 12,
+        gpu = "RTX 3060",
+        fps = 160
+    },
+
+    {
+        nome = "Microsoft Flight Simulator",
+        ram = 32,
+        gpu = "RTX 4080",
+        fps = 120
+    }
+}
+
+local function linha()
+    print("----------------------------------------")
+end
+
+local function mostrarPC()
+    linha()
+    print("        " .. PC.nome)
+    linha()
+
+    print("CPU: " .. PC.cpu)
+    print("GPU: " .. PC.gpu)
+    print("RAM: " .. PC.ram .. " GB")
+    print("SSD: " .. PC.armazenamento .. " GB")
+    print("Sistema: " .. PC.sistema)
+
+    linha()
+end
+
+local function verificarJogo(jogo)
+    print("\n🎮 " .. jogo.nome)
+
+    if PC.ram >= jogo.ram then
+        print("RAM: OK")
+    else
+        print("RAM: insuficiente")
+        return
+    end
+
+    print("GPU necessária: " .. jogo.gpu)
+    print("FPS estimado: " .. jogo.fps)
+
+    if jogo.fps >= 120 then
+        print("Status: RODANDO MUITO BEM 🚀")
+    elseif jogo.fps >= 60 then
+        print("Status: RODANDO BEM ✅")
+    else
+        print("Status: RODANDO COM DIFICULDADE ⚠️")
+    end
+end
+
+local function iniciarPC()
+    print("Iniciando PC...")
+    print("Carregando CPU...")
+    print("Carregando GPU...")
+    print("Carregando RAM...")
+    print("Sistema iniciado!")
+
+    mostrarPC()
+
+    print("Jogos compatíveis:")
+
+    for _, jogo in ipairs(jogos) do
+        verificarJogo(jogo)
+    end
+
+    linha()
+    print("PC pronto para jogar! 🎮🔥")
+    linha()
+end
+
+iniciarPC()
