@@ -64,8 +64,6 @@ local function mostrarPC()
     print("             " .. PC.nome)
 
     linha()
-
-    print("CPU: " .. PC.cpu)
     print("GPU: " .. PC.gpu)
     print("RAM: " .. PC.ram .. " GB")
     print("SSD: " .. PC.armazenamento .. " GB")
